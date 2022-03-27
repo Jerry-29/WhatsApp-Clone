@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import socketIo from "socket.io-client";
+import socketIo, { Socket } from "socket.io-client";
 import ReactScrollToBottom from 'react-scroll-to-bottom'
 import "../style/Join.css";
 import { Message } from "./Message";
@@ -52,16 +52,16 @@ export const Chat = () => {
         console.log("43",data);
     });
 
-    socket.on("Leave", (data) => {
+    socket.on("leave", (data) => {
         setmessageData([...messageData,data])
-        console.log("48",data);
+        console.log("4llll8",data);
     });
 
     return () => {
-      socket.emit("Disconnect");
+      socket.emit("disconnect");
       socket.off();
     };
-  }, []);
+  }, [Socket]);
 
   useEffect(()=>{
 
@@ -84,7 +84,7 @@ export const Chat = () => {
         <div className="header">
             <div>
            <img className="userDP" src="https://th.bing.com/th/id/R.1a8b91d0ef90966f5f446226f621c157?rik=AhJwQlgQI3b8rw&riu=http%3a%2f%2fwww.watracker.net%2ficon%2fdefault%2fwhatsapp.png&ehk=RG0jaIbjmlDUuDPHC7yZxz5bPtkw6CIZOANs7jwcUyk%3d&risl=&pid=ImgRaw&r=0" alt="" />
-            <h2 className="userNamewithDP">Jerry</h2>
+            <h2 className="userNamewithDP">{name}</h2>
             </div>
             <a href="/"> <img src={closeIcon} alt="Close" /></a>
         </div>

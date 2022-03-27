@@ -35,8 +35,8 @@ io.on('connection',(socket)=>{
     socket.on('message',({text,id})=>{
         io.emit("SendMessage",({user:users[id],text,id}))
     })
-    socket.on('Disconnect',()=>{
-        socket.broadcast.emit('Leave',{user:"Admin",text:`${users[socket.id]} has left`})
+    socket.on('disconnect',()=>{
+        socket.broadcast.emit('leave',{user:"Admin",text:`${users[socket.id]} has left`})
         //console.log(`User left`)
     })
 
