@@ -25,19 +25,19 @@ const io=socket(server)
 io.on('connection',(socket)=>{
     // console.log('new connection')
     socket.on('Joined',(user)=>{
-      console.log('user',user.name)
+    //   console.log('user',user.name)
       users[socket.id]=user.name
-      console.log(`${user} has joined`)
-      socket.broadcast.emit('UserJoined',{user:"Admin",message:`${users[socket.id]} has Joined`})
-      socket.emit('Welcome',{user:"Admin",message:"Welcome to Chat App"})
+     // console.log(`${user} has joined`)
+      socket.broadcast.emit('UserJoined',{user:"Admin",text:`${users[socket.id]} has Joined`})
+      socket.emit('Welcome',{user:"Admin",text:"Welcome to WhatsApp"})
     })
 
     socket.on('message',({text,id})=>{
         io.emit("SendMessage",({user:users[id],text,id}))
     })
-    socket.on('disconnect',()=>{
-        socket.broadcast.emit('Leave',{user:"Admin",message:`${users[socket.id]} has left`})
-        console.log(`User left`)
+    socket.on('Disconnect',()=>{
+        socket.broadcast.emit('Leave',{user:"Admin",text:`${users[socket.id]} has left`})
+        //console.log(`User left`)
     })
 
 })

@@ -1,4 +1,4 @@
-.joinPage{
+/* .joinPage{
     background-color: rgb(59, 57, 57);
     width: 210vh;
     height: 100vh;
@@ -12,7 +12,7 @@
 }
 
 .sendBtn{
-    background-color:red;
+    background-color:#128C7E;
     color: white;
     border: none;
     width: 20%;
@@ -25,4 +25,4 @@
 }
 .sendBtn:hover{
     transform: translate(10px);
-}
+} */
