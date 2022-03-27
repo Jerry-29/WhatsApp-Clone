@@ -10,7 +10,7 @@ import closeIcon from "../images/closeIcon.png";
 import InputEmoji from "react-input-emoji";
 import useSound from "use-sound";
 import notificationAlert from "../images/notification.mp3";
-const ENDPOINT = "http://localhost:6789/";
+const ENDPOINT = "https://wpbackend-clone-govind.herokuapp.com/";      // deployed backend server
 let socket;
 export const Chat = () => {
   const { name } = useSelector((store) => store.loginReducer);
