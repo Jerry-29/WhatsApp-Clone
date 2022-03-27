@@ -1,0 +1,28 @@
+.joinPage{
+    background-color: rgb(59, 57, 57);
+    width: 210vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.joinContainer{
+    height: 50%;
+    width: 50%;
+}
+
+.sendBtn{
+    background-color:red;
+    color: white;
+    border: none;
+    width: 20%;
+    transition: all .3s;
+    cursor: pointer;
+}
+.sendBtn>img{
+    width: 2.6vmax;
+    filter: brightness(100)invert();
+}
+.sendBtn:hover{
+    transform: translate(10px);
+}
