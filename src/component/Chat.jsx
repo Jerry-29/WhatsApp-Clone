@@ -36,7 +36,7 @@ export const Chat = () => {
     socket = socketIo(ENDPOINT, { transports: ["websocket"] });
     socket.on("connect", () => {
       setId(socket.id);
-      alert("connected");
+      // alert("connected");
     });
 
     socket.emit("Joined", { name });
