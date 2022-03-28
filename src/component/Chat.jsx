@@ -20,7 +20,7 @@ export const Chat = () => {
   const [message, setMessage] = useState();
   const [messageData, setmessageData] = useState([]);
   const [play] = useSound(notificationAlert);
-
+  console.log(messageData)
   const handelmessageInp = (e) => {
     setMessage(e.target.value);
   };
@@ -45,7 +45,7 @@ export const Chat = () => {
     socket.on("welcome", (data) => {
       setmessageData([...messageData, data]);
       // Receving data from backend
-     console.log("3/8", messageData);
+    //  console.log("3/8", messageData);
       // console.log("38",data);
     });
 
@@ -102,7 +102,7 @@ export const Chat = () => {
               <Message
                 key={i}
                 user={e.id === id ? "" : e.user}
-                text={e.message}
+                message={e.message}
                 classs={e.id === id ? "right" : "left"}
               />
             );

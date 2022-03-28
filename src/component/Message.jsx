@@ -1,5 +1,5 @@
 export const Message = ({ user, message, classs }) => {
-  //console.log(text)
+  console.log(message)
   const getTime = () => {
     const today = new Date();
     let hours =
