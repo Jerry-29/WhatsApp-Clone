@@ -24,7 +24,7 @@ export const Chat = () => {
   };
 
   const send = () => {
-    if (text.length > 0) {
+    if (message.length > 0) {
       socket.emit("message", { message, id });
       // document.getElementById('chatInput').value=''
       setMessage("");
