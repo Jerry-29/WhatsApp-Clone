@@ -10,24 +10,24 @@ import closeIcon from "../images/closeIcon.png";
 import InputEmoji from "react-input-emoji";
 import useSound from "use-sound";
 import notificationAlert from "../images/notification.mp3";
-const ENDPOINT = "https://wpbackend-clone-govind.herokuapp.com/";      // deployed backend server
+const ENDPOINT = "https://whataappclonebackendserver.herokuapp.com/";      // deployed backend server
 let socket;
 export const Chat = () => {
   const { name } = useSelector((store) => store.loginReducer);
-  const [text, setText] = useState();
+  const [message, setMessage] = useState();
   const [id, setId] = useState("");
   const [messageData, setmessageData] = useState([]);
   const [play] = useSound(notificationAlert);
 
   const handelmessageInp = (e) => {
-    setText(e.target.value);
+    setMessage(e.target.value);
   };
 
   const send = () => {
     if (text.length > 0) {
-      socket.emit("message", { text, id });
+      socket.emit("message", { message, id });
       // document.getElementById('chatInput').value=''
-      setText("");
+      setMessage("");
       play();
     }
   };
@@ -41,20 +41,20 @@ export const Chat = () => {
 
     socket.emit("Joined", { name });
     socket.on("Welcome", ({ message, user }) => {
-      setmessageData([...messageData, { text: message, user: user }]);
+      setmessageData([...messageData, { message: message, user: user }]);
       // Receving data from backend
-      console.log("3/8", messageData);
+    //  console.log("3/8", messageData);
       // console.log("38",data);
     });
 
     socket.on("UserJoined", (data) => {
       setmessageData([...messageData, data]);
-      console.log("43", data);
+     // console.log("43", data);
     });
 
     socket.on("leave", (data) => {
       setmessageData([...messageData, data]);
-      console.log("4llll8", data);
+     // console.log("4llll8", data);
     });
 
     return () => {
@@ -100,7 +100,7 @@ export const Chat = () => {
               <Message
                 key={i}
                 user={e.id === id ? "" : e.user}
-                text={e.text}
+                text={e.message}
                 classs={e.id === id ? "right" : "left"}
               />
             );
@@ -108,8 +108,8 @@ export const Chat = () => {
         </ReactScrollToBottom>
         <div className="inputBox">
           <InputEmoji
-            value={text}
-            onChange={setText}
+            value={message}
+            onChange={setMessage}
             onEnter={send}
             cleanOnEnter
             placeholder="Type a message"

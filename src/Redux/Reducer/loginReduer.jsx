@@ -2,7 +2,7 @@ import { GET_USER_NAME } from "../actionType"
 
 const init={
     name:'',
-    text:''
+    message:''
 }
 
 export const loginReducer=(store=init,{type,payload})=>{

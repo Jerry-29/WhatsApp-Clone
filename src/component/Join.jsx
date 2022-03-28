@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getLoggedUserName } from "../Redux/action";
 import "../style/Join.css";
-import logo from "../images/logo.png";
 export const Join = () => {
   //  const {user}=useSelector(store=>store.loginReducer)
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-export const Message = ({ user, text, classs }) => {
+export const Message = ({ user, message, classs }) => {
   //console.log(text)
   const getTime = () => {
     const today = new Date();
@@ -15,7 +15,7 @@ export const Message = ({ user, text, classs }) => {
     return (
       <div>
         <div className={`messageBox ${classs}`}>
-          {`${user} : ${text}`} <span className={`arrowTool${classs}`}></span>{" "}
+          {`${user} : ${message}`} <span className={`arrowTool${classs}`}></span>{" "}
           <br />{" "}
           <span
             style={{
@@ -32,7 +32,7 @@ export const Message = ({ user, text, classs }) => {
     return (
       <div>
         <div className={`messageBox ${classs}`}>
-          {`You : ${text}`} <span className={`arrowTool${classs}`}></span>{" "}
+          {`You : ${message}`} <span className={`arrowTool${classs}`}></span>{" "}
           <br /> <span className="showTime">{getTime()}</span>
         </div>
       </div>
