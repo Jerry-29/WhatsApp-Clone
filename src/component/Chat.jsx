@@ -10,12 +10,14 @@ import closeIcon from "../images/closeIcon.png";
 import InputEmoji from "react-input-emoji";
 import useSound from "use-sound";
 import notificationAlert from "../images/notification.mp3";
-const ENDPOINT = "https://whataappclonebackendserver.herokuapp.com/";      // deployed backend server
 let socket;
+
+const ENDPOINT = "https://whataappclonebackendserver.herokuapp.com/";      // deployed backend server
+
 export const Chat = () => {
   const { name } = useSelector((store) => store.loginReducer);
-  const [message, setMessage] = useState();
   const [id, setId] = useState("");
+  const [message, setMessage] = useState();
   const [messageData, setmessageData] = useState([]);
   const [play] = useSound(notificationAlert);
 
@@ -39,21 +41,21 @@ export const Chat = () => {
       // alert("connected");
     });
 
-    socket.emit("Joined", { name });
-    socket.on("Welcome", ({ message, user }) => {
-      setmessageData([...messageData, { message: message, user: user }]);
+    socket.emit("joined", { name });
+    socket.on("welcome", (data) => {
+      setmessageData([...messageData, data]);
       // Receving data from backend
-    //  console.log("3/8", messageData);
+     console.log("3/8", messageData);
       // console.log("38",data);
     });
 
-    socket.on("UserJoined", (data) => {
+    socket.on("userJoined", (data) => {
       setmessageData([...messageData, data]);
      // console.log("43", data);
     });
 
     socket.on("leave", (data) => {
-      setmessageData([...messageData, data]);
+      setmessageData([...messageData,data]);
      // console.log("4llll8", data);
     });
 
@@ -61,11 +63,11 @@ export const Chat = () => {
       socket.emit("disconnect");
       socket.off();
     };
-  }, [Socket]);
+  }, []);
 
   useEffect(() => {
-    socket.on("SendMessage", (data) => {
-      console.log("60", data);
+    socket.on("sendMessage", (data) => {
+     // console.log("60", data);
       setmessageData([...messageData, data]);
     });
 
